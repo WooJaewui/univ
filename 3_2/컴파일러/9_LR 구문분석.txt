@@ -1,0 +1,96 @@
+
+ LR 구문분석.
+
+
+
+ # LR 구문분석.
+
+LR구문분석 종류.
+SLR : Simple LR.
+CRL : Canonical LR.
+LALR : Lookahead LR.
+
+파싱표.
+GOTO부분과 action부분이 있다.
+
+
+
+ # LR(0) 항목과 Closure.
+
+LR(0) 항목.
+A -> XYZ가 있을때 A -> · XYZ 로 표현하는 방식으로 현재 X를 분석하고 있다를 의미한다.
+
+LR(0) 항목 분류.
+Closure 항목 : A -> · XYZ.
+Kernel 항목 : A -> X · YZ , A -> XY · Z.
+Reduce 항목 : A -> XYZ · 
+
+증가문법.
+시작기호 앞에 시작기호를 부르는 새로운 기호를 생성하는 것을 의미한다.
+shift-reduce를 사용할 때 좀 더 편리하다.
+문법규칙에 0을 붙인다.
+예 : 0 ) S' ->  · E
+
+Closure.
+A -> a · Bb에서 논터미널 B를 생성규칙의 왼쪽으로 갖는 LR(0) 항목들의 집합.
+터미널 기호가 올 때까지 계속 진행한다.
+
+Closure 예시.
+S' -> E
+E -> E + T 
+E -> T
+일 때, I0 : closure( [ S' ->  · E ] )는?
+[ E ->  · E + T ], [ E ->  · T ]
+[ T ->  · T * F ], [ T ->  · F ]
+[ F ->  · (E) ] , [ F -> id ]
+
+
+
+ # Canonical Collection.
+
+Canonical Collection.
+파싱표에서 상태들의 집합.
+GOTO( I0, E ) = closure { [ S' -> E · ] , [ E -> E · + T ] } = l1
+터미널 기호 앞에 마킹되면 끝난다. 
+순서대로 I1, I2, I3, ... colsure 집합을 만든다.
+
+GOTO 그래프.
+l1,l2,l3, ...의 집합 전체를 나타낸 것을 GOTO 그래프라고 부른다.
+
+
+
+ # SLR 파싱표 Algorithm.
+
+SLR 파싱표.
+row : 상태를 나타냄.
+column : 기호를 나타냄.
+값 : S5, R2 등으로 나타냄.
+
+SLR 파싱표 GOTO 그래프 활용.
+shift : GOTO( Ii, a ) = Ij => Shift J ( a 부분이 터미널 기호가 나올 때 shift한다 )
+GOTO : GOTO( Ii, A ) = Ij => GOTO J ( A 부분이 논터미널 기호가 나올 때 GOTO 한다 )
+
+SLR 파싱표 Shift.
+상태는 Ii에서 i부분이고, a는 column, 값은 shift J로 나타낸다. ( 터미널 )
+
+SLR 파싱표 GOTO.
+상태는 Ii에서 i부분이고, A는 column, 값은 J로 나타냄. ( 논터미널 )
+
+SLR 파싱표 Reduce.
+E -> T · 와 같이 분석이 끝나면 E -> F의 상태값이 핸들러고, FOLLOW(E) 기호를 Reduce한다.
+FOLLOW 기호를 통해 구한다.
+
+SLR 파싱표 accept.
+$표시를 만나면 accept.
+
+
+
+ # SLR 구분문석.
+
+SLR 구문분석.
+상태, 기호, 값 SLR 파싱표를 통해 구문을 분석한다.
+
+
+
+
+
