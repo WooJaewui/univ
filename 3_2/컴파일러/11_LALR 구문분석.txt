@@ -1,0 +1,48 @@
+
+ LALR 구문분석.
+
+
+
+ # CLR 파싱표의 효율화.
+
+Bottom-Up 구문분석 종류.
+Shift-reduce 구문분석. 
+단순순위 구문분석. ( Shift, Reduce 해결, 핸들 문제 ) 
+SLR 구문분석. ( 핸들 결정, 충돌문제 )
+CLR 구문분석. ( 충돌문제해결, 파싱표 크기 )
+LALR 구문분석. ( 파싱표 효율화 )
+
+CLR 파싱표의 단점.
+Lookahead 계산 시간이 오래 걸린다.
+SLR보다 파싱표의 크기가 커진다.
+모든 항목마다 lookahead 계산 시간소요.
+파싱표 크기가 커져서 구문분석 성능저하.
+단점을 해결하기 위해 LALR 구문분석 도입.
+
+
+
+ # LALR의 Canonical collection.
+
+LALR 파싱표 작성 방법.
+SLR을 구한 후에 Lookahead를 구한다.
+CLR 파싱표 작성 후에 중복된 항목을 합쳐준다. 맨 처음 LALR 파싱표 작성방법.
+시간이 오래걸리는 단점이 있어서 SLR을 구한 후 Lookahead를 구해준다.
+
+
+
+ # LR(0)항목의 Lookahead.
+
+LR(0) 항목의 Lookahead 계산.
+B -> a1 · Aa2 -> a1a · b a2 
+
+링썸.
+A 링썸 B 이면 A가 앱실론이 아니면 A값을 리턴하고, 앱실론이면 B값을 리턴.
+
+Lookahead 구하기.
+리듀스 항목을 찾는다.
+S' 지점까지 계속 reduce하면서 찾아간다.
+도중에 FIRST( ) 기호를 찾으면 Lookahead의 인자로 하나 넣는다.
+
+
+
+
