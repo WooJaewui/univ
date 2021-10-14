@@ -1,0 +1,86 @@
+
+ Top-Down 구문분석.
+
+
+
+ # Top-Down 구문분석.
+
+구문분석의 종류.
+Top-Down 방법 : 시작기호 -> 문장. 
+Bottom-Up 방법 : 문장 -> 시작기호. ( reduce, shift, Lookahead )
+
+Top-Down 구문분석.
+좌단유도를 한다. ( 왼쪽을 먼저 계산한다 )
+
+Top-Down 구문분석의 문제점 1. 
+Left-recursion : 생성규칙이 반복적으로 적용되어서 무한 루프에 빠지게 된다.
+
+Left-recursion 해결.
+Right-recursion으로 변환시킨다. ( A -> Aa => A -> aA ) 
+
+Top-Down 구문분석의 문제점 2.
+Backtracking : 여러개의 과정이 있을 때 원하는 결과값이 안나오는 경우 뒤로 돌아가는 현상.
+                  ( 효율을 떨어뜨린다 )
+
+Backtracking 해결.
+같은 prefix를 갖는 생성 규칙들이 존재한다.
+공통된 prefix를 인수분해 한다. ( A -> a | ab  => A -> aA' ,  A' -> 앱실론 | b ) 
+
+LL 조건.
+A -> a | b ∈ P
+1. FIRST( a ) ∩ FIRST( b ) = 공집합.
+2. if 앱실론 ∈ FIRST( a ) then 
+   FOLLOW( A ) ∩ FIRST( b ) = 공집합.
+a, b 둘 중 하나가 앱실론이면 2번 적용.
+
+
+ 
+ # Recursive-Descent 구문분석.
+
+Recursive-Descent 구문분석.
+1. 터미널기호가 나오면 각각의 프로시저를 실행한다.
+2. 논터미널 기호가 나오면 그것에 대한 프로시저를 호출한다. ( S -> aAb , A-> aS | B )
+
+Recursive-Descent 장점.
+재귀적 프로시저를 이용한다.
+문법으로부터 구문분석기를 빠르게 구성.
+오류 발생 가능성이 적다.
+
+Recursive-Descent 단점.
+속도가 느리다.
+구문분석기의 크기가 크다.
+생성규칙이 바뀌면 구문분석기를 바꿔야 한다.
+
+
+
+ # Predictive 파싱표.
+
+규칙.
+for A -> a ∈ P do
+for a ∈ FIRST( a ) do
+	M[ A, a ] := A -> a ; 
+if A -> 앱실론 then
+for B ∈ FOLLOW(A) do
+	M[ A, b ] := A -> 앱실론 ; 
+
+파싱표.
+row : 논터미널 기호.
+column : 논터미널 기호.
+값 : FIRST( row의 논터미널 기호 )을 실행했을 때 column이 있을 경우 식으로 표현된다. ex ) E -> TE' 
+
+
+
+ # Predictive 구문분석.
+
+구조.
+스택, 문자열, 생성규칙으로 이루어져 있다.
+스택 : 스택에 있는 기호를 문자열과 같이 만들면 된다.
+문자열 : 최종 결과값이 될 문자열을 나타낸다.
+생성규칙 : 생성 규칙들 중에서 적용된 생성 규칙의 번호를 적는다.
+
+주의사항.
+스택은 기호를 적용할 때마다 뒤에 생성된다. 
+
+
+
+
