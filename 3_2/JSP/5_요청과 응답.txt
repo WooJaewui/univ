@@ -1,0 +1,115 @@
+
+ 요청과 응답.
+
+
+
+ # JSP의 처리 과정.
+
+요청과 응답.
+요청 : 클라이언트가 웹 서버에게 특정 페이지의 전송을 요구하는 것.
+응답 : 웹 서버가 클라이언트에게 결과를 전송해 주는 것.
+
+request와 response객체.
+웹 컨테이너는 요청 정보를 서블릿에게 제공하기 위해 request 객체를 만들어 제공함.
+서블릿이 상태콛, 응답헤더, 몸체를 표현할 수 있도록 response 객체를 만들어 제공함.
+
+
+
+ # request 내장 객체.
+
+request 내장 객체.
+클라이언트의 요청을 표현하는 JSP 내장 객체.
+HttpServletRequest 인터페이스.
+
+request 내장 객체의 기능.
+클라이언트와 서버 관련 정보 읽기.
+클라이언트가 전송한 데이터( 파라미터 ) 읽기.
+클라이언트가 전송한 헤더, 쿠키 정보 읽기.
+속성의 처리( 데이터 공유 )
+
+requeset 메소드 설명.
+getRemoteAddr( ) : 클라이언트 컴퓨터의 IP주소를 리턴.
+getContentLength( ) : 클라이언트가 전송한 요청 몸체의 길이를 리턴.
+getCharacterEncoding( ) : 클라이언트가 요청 몸체를 전송할 때 사용한 문자열 인코딩을 리턴.
+getContentType( ) : 클라이언트가 요청 몸체를 전송할 때 사용한 문서 타입을 리턴.
+getProtocol( ) : 클라이언트가 요청에서 사용한 프로토콜을 리턴.
+getMethod( ) : 클라이언트가 데이터를 전송할 때 사용한 요청 방식을 리턴.
+getContextPath( ) : JSP 페이지가 속한 웹 애플리케이션의 경로를 리턴.
+getServerName( ) : 연결할 때 사용한 서버 주소를 리턴.
+getServerPort( ) : 연결할 때 사용된 서버의 포트 번호를 리턴.
+getParameter( "name" ) : name으로 된 파라미터 값을 리턴한다.
+getParameterValues( "name" ) : name으로 된 모든 값을 배열로 리턴한다.
+getParameterNames( ) : 웹 브라우저가 전송한 파라미터의 이름을 리턴. Enumeration<String>
+getParameterMap( ) : 웹 브라우저가 전송한 파라미터를 Map 형식으로 리턴. <파라미터이름, 값>
+getHeader( "name" ) : 지정한 이름의 헤더 값을 리턴.
+getHeaders( "name" ) : 지정한 이름의 모든 헤더 값을 리턴. ( Enumeration )
+getHeaderNames( ) : 모든 헤더의 이름을 리턴. ( Enumeration ) 
+getIntHeader( "name" ) : 지정한 헤더의 값을 정수로 리턴.
+getDateHeader( "name" ) : 지정한 헤더의 값을 시간 값으로 리턴.
+
+HTML 폼.
+사용자가 데이터를 입력하기 위한 틀.
+요청과 함께 서버로 데이터를 전송할 수 있음.
+텍스트 필드, 체크박스, 라디오 버튼, 제출 버튼 등의 요소를 포함.
+
+폼과 request 객체.
+폼에 입력된 정보는 파라미터로 전송됨.
+JSP 페이지에서는 request 객체를 이용하여 사용자가 보낸 데이터를 읽고 처리할 수 있음.
+
+get 방식에 의한 요청.
+get 요청은 특정 자원을 단순히 가져 오는 것을 의미함. ( 단순 질의, 검색 )
+URL 뒤에 쿼리 문자열을 붙여 요청함.
+길이에 제한 ( 4K 이하 )이 있으며 보안에 취약.
+파라미터를 포함한 북마크가 가능.
+
+post 방식에 의한 요청.
+HTTP 메시지의 몸체에 데이터를 전달.
+길이에 제한이 없으며 보안이 상대적으로 유리함. ( 보안이 뛰어나진 않음 )
+브라우저 히스토리에 남지 않으며 북마크가 불가능.
+
+
+
+ # response 내장 객체.
+
+response 내장 객체.
+클라이언트에게 응답을 제공하기 위해 HttpServletResponse 인터페이스를 구현한 객체.
+
+response 내장 객체의 기능.
+응답 헤더 정보 설정.
+다른 페이지로 강제 이동.
+쿠키 추가.
+상태 코드 설정하기.
+응답 몸체를 만들기 위한 출력 스트림 객체 제공.
+
+response 메소드.
+addHeader( name, value ) : name 헤더에 value를 값으로 추가.
+addIntHeader( name, value ) : name 헤더에 정수 값 value를 값으로 추가.
+setHeader( name, value ) : name 헤더에 값을 value로 변경. ( override )
+setIntHeader( name, value ) : name 헤더의 정수 값을 value로 변경. ( override )
+containsHeader( name ) : 이름이 name인 헤더를 포함하고 있을 경우 true.
+setContentType( type ) : 응답 문서의 형식 MIME을 설정.
+
+응답 캐시의 사용.
+서버에 요청을 하지 않고 캐시에 있는 데이터를 사용하여 응답하는 것. - setHeader( ) 
+빠른 응답이 가능. - sendRedirect( ) 
+서버 로드와 네트워크 사용의 감소. - addCookie( )
+내용 변경이 없는 페이지는 캐시를 통해 빠른 응답을 제공될 수 있음. - setStatus( ) 
+내용 변경이 빈번한 사이트의 경우, 캐시가 적용되면 잘못된 결과를 응답할 수 있음. - getWriter( )
+
+응답 헤더에 캐시와 관련된 필드.
+Cache-Control : 응답을 캐시할 것인지를 지정.
+response.setHeader( "Cache-Control" , "no-cache" ) : 캐시에 있는 내용으로 응답을 제공하지 않음.
+response.setHeader( "Cache-Control" , "no-store" ) : 캐시에 데이터를 저장하지 않는다.
+
+다른 페이지로 강제 이동시키기.
+response.sendRedirect( "url" ) ;
+다른 페이지로 강제 이동시키기 ( redirect 기능 )
+요청에 대한 임시 응답이 일단 가고, 브라우저가 재차 URL을 요청을 하게 됨.
+상태 코드 302, 응답 헤더에 이동될 URL이 들어 있음.
+이동 URL의 요청 데이터에 특수 문자나 한글이 있으면 인코딩이 필요함.
+상태 코드 301 ( 영구이동 ), 302 ( 임시이동 ) 
+
+
+
+
+
