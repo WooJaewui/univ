@@ -1,0 +1,87 @@
+
+ JDBC를 이용한 데이터베이스 프로그래밍.
+
+
+
+ # MariaDB 설치.
+
+데이터베이스.
+데이터를 모아놓은 집합 장소.
+
+DBMS.
+데이터베이스의 효과적 관리를 위한 응용 소프트웨어.
+관계형 DBMS에서는 데이터를 테이블 형태로 저장함.
+데이터베이스는 여러 테이블들로 구성됨.
+하나의 테이블은 여러 레코드들로 구성됨.
+
+데이터베이스 스키마.
+자료의 구조, 자료 간의 관계에 관한 정의.
+테이블의 구조, 즉 테이블을 구성하는 속성들에 대한 정보를 스키마라고 함.
+
+MariaDB.
+무료로 사용할 수 있는 DBMS. ( 라이센스를 준수해야된다 )
+root 계정의 암호를 설정하고 기억해야 함.
+
+자바 커넥터 다운로드받기.
+JDBC 드라이버를 lib폴더에 적용해야함.
+
+
+
+ # MariaDB 사용하기.
+
+명령문 실행.
+클라이언트 프로그램을 실행한 후 명령을 실행함.
+명령은 기본적으로 세미콜론( ; )으로 끝남.
+
+데이터베이스와 테이블 다루기.
+show databases : 데이터베이스의 목록을 보여주는 명령.
+create database 데이터베이스이름 : 데이터베이스를 생성하는 명령. ( root에서 가능 )
+
+
+
+ # SQL 명령.
+
+테이블 생성하기.
+create table 테이블이름 ( 필드이름 자료형 [ 옵션 ],  ... ) ;
+
+테이블 삭제하기.
+drop table 테이블이름 ;
+
+테이블에 데이터 입력하기.
+insert into 테이블이름 values( 값1, 값2, ... ) ;
+
+데이터 검색하기.
+select * from 테이블이름 ;
+
+데이터 수정하기.
+update 테이블 set 필드이름=값 where 조건 ;
+
+데이터 삭제하기.
+delete from 테이블 where 조건 ;
+
+
+
+ # DBMS 연동 프로그래밍.
+
+DB 연동 프로그래밍에 필요한 것들.
+Class.forName : 드라이버 동적 바인딩 방식으로 로드.
+Connection : DB연결.
+Statement : SQL 구문 저장.
+ResultSet : SQL 구문을 실행한 결과를 저장.
+
+try-with-resourfces 구문의 사용.
+try ( 리소스 선언문; 리소스 선언문2 ) { 
+	~~~
+}
+try-catch 구문을 마친 후 자동으로 close 해준다.
+
+Statement 인터페이스.
+executeQuery( SQL ) : select 구문을 실행할 때 사용. ( ResultSet 리턴 )
+executeUpdate( SQL ) : update, delete, create 구문을 실행할 때 사용. ( int 리턴 )
+
+ResultSet 인터페이스.
+select 구문을 실행하여 ResultSet 객체가 생성되면 커서가 만들어지고, select 구문의 실행 결과를 가리킴.
+rs.next( )를 통해 커서로 다음 로우가 존재하는지 확인할 수 있다.
+
+
+
