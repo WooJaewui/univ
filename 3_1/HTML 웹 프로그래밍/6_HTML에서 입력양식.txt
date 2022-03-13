@@ -1,0 +1,152 @@
+
+ HTML에서 입력양식.
+
+
+
+ # <form> 태그.
+
+form 태그.
+사용자로부터 다양한 형태의데이터를 입력받기 위해 필욯나 입력 요소들을 담는 컨테이너.
+입력요소는 <form> 태그 내에서 사용해야 함. ( <input> , <select> , <textarea> 등 )
+<form> 태그만 사용하면 아무것도 표시되지 않음.
+
+action 속성.
+데이터를 전달받아 처리할 페이지의 URL 지정.
+
+method 속성.
+데이터 전송에 사용하는 HTTP 방법을 지정.
+get , post.
+
+enctype 속성.
+method가 post일 때 데이터 인코딩 방식.
+multipart/form-date : file을 입력받을 때 사용하는 enctype.
+
+autocomplete.
+on : 자동완성 기능. 
+
+get 방식.
+기본값, 폼 데이터가 이름과 값의 쌍 형태로 URL에 포함되어 전송.
+최대 2048 글자 ( 4096바이트 )
+보안이 중요하지 않은 데이터 전달에 사용.
+이전 페이지 버튼을 통한 이동 가능.
+
+post 방식.
+HTTP Request 헤더 속에 포함시켜 전송.
+데이터 길이 제약 없음.
+보안이 필요한 로그인 정보, 회원 정보 등의 전송에 사용.
+이전 페이지를 누르면 데이터를 다시 보내야 한다는 경고가 표시.
+
+
+
+ # <input> 태그.
+
+input 태그.
+사용자가 데이터를 입력할 수 있는 입력 타입을 지정.
+type 속성의 값에 따라 다양한 형태의 입력 타입을 가짐. 
+type에 따라 적용가능한 속성이 다를 수 있다.
+
+input type 속성값.
+text : 한 줄 짜리 텍스트.
+password : 비밀번호.
+radio : 라디오 버튼.
+checkbox : 체크박스.
+hidden : 숨겨진 상태로 입력.
+file : 업로드를 위한 파일 선택.
+image : 이미지를 제출 버튼으로 지정.
+submit : 제출 버튼.
+reset : 입력 초기화 버튼.
+button : 클릭 가능한 일반 버튼.
+search : 검색어.
+tel : 전화번호.
+url : URL.
+email : 이메일 주소.
+number : 특정 범위의 숫자.
+range : 특정 범위의 숫자.
+color : 색상.
+date : 날짜( 년, 월, 일 )
+month : 년도와 월.
+week : 연도와 주차.
+time : 시간.
+datetime-local : 날짜와 시간.
+
+input 속성.
+autofocus : 페이지에 들어왔을때 input 태그에 입력할 수 있게 선택해준다.
+maxlength : 최대 길이를 지정한다.
+placeholder : 입력 양식을 보여줄 수 있다.
+autocomplete : 자동완성기능. ( on / off )
+accept : 파일의 유형을 선택. ( file 타입에서 사용 )
+multiple : 하나 이상의 파일을 선택할 수 있다. ( file 타입에서 사용 )
+title : 입력형식 등의 추가정보를 표시할 수 있다.
+required : 반드시 입력해야 되는 값을 의미한다.
+pattern : 입력값에 대한 유효성 검사를 위한 정규 표현식 지정.
+min : 최소값.
+max : 최대값.
+step : 입력값의 유효 간격.
+
+button 태그.
+클릭할 수 있는 버튼을 정의하는 태그.
+type : button / submit / reset 으로 정의.
+<button> 안에 <image>를 사용해서 버튼을 이미지로 표현할 수 있다.
+
+정규표현식.
+특정한 규칙을 가진 문자열을 표현하는 데 사용하는 수식.
+영문 이름 : [ a-zA-Z ]{ 4 , 10 
+전화번호 : 0\d{ 1, 2 }\-\d{ 3, 4 }\-\d{ 4 }
+주민등록번호 : \d{ 6 }\-[ 1-4 ]\d{ 6 }
+? : 0 또는 1번 반복.
++ : 1번이상 반복.
+* : 0번이상 반복.
+
+
+
+ # <textarea> , <select> , ... 태그.
+
+textarea 태그.
+여러 줄에 해당하는 텍스트를 입력받을 때 사용.
+
+textarea 주요 속성.
+name : 텍스트 영역의 이름.
+rows : 행의 개수.
+cols : 열의 개수.
+weap : 폼으로 전송될 떄 줄바꿈 포함 여부. ( soft / hard )
+readonly : 텍스트 영역을 읽기 전용으로만 사용.
+autofocus : 입력할 수 있게 포커스해줌.
+
+select 태그.
+드롭다운 리스트를 만들 때 사용.
+
+select 주요 속성.
+size : 한 번에 화면에 보여주는 항목의 개수 지정.
+multiple : 여러 항목을 한꺼번에 선택할 수 있도록 지정.
+
+datalist 태그.
+<input type="text" ... >에 대한 옵션 목록을 지정.
+input 속성 list에 datalist id와 매핑해서 
+
+option 태그.
+<select> , <datalist> 태그의 하위 태그로서, 목록에서 각 항목을 정의.
+
+option 주요 속성.
+disabled : 해당 항목을 비활성화시킴.
+selected : 초기값으로 선택되는 항목.
+label : 긴 항목을 짧은 별칭으로 표시.
+
+optgroup 태그.
+<select> 내에서 연관된 항목들을 그룹핑하는 태그.
+
+fieldset 태그.
+폼 내의 관련된 요소들을 그룹핑. 
+사각형 테두리 안에 표시.
+
+legend 태그.
+fieldset 태그 내에서 사용.
+그룹핑되는 요소들에 대한 캡션을 사각형 테두리 선 상에 표시.
+
+label 태그.
+input 태그에 대한 레이블 정의. ( 시각적 효과는 없음 )
+마우스 사용자의 사용성 향상.
+label 태그 내에 있는 텍스트를 클릭해도 해당하는 <input> 태그의 선택이 가능.
+for과 input id와 매핑해서 사용할 수 있다.
+
+
+
