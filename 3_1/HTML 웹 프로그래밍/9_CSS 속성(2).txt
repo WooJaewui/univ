@@ -1,0 +1,88 @@
+
+ CSS 속성(2)
+
+
+
+ # 텍스트 속성.
+
+text-decoration 속성.
+텍스트에서의 줄 장식.
+none, underline, overline, line-through.
+
+text-shadow 속성.
+텍스트에 그림자 효과 지정.
+적용안함 : none 
+적용시 : 수평위치 수직위치 [ 흐림정도 ] [ 색상 ]
+
+word-wrap 속성.
+단어가 길어서 요소의 폭을 넘을 경우 단어를 분리해서 줄바꿈의 수행 여부 지정.
+normal , break-word.
+
+
+
+ # 박스 속성.
+
+CSS 박스 모델.
+HTML 문서의 각 요소를 사각형 형태의 박스로 간주.
+CSS를 통해 각 박스의 위치 , 크기 , 색상 등을 지정.
+웹페이지의 레이아웃을 구성하는 중요한 개념.
+margin , border , padding , contents로 구성.
+
+display 속성.
+HTML 요소의 표현 방식 지정.
+요소를 위해 사용할 박스의 종류 지정.
+none , inline( 줄바꿈 X ) , block( 앞뒤로 줄바꿈 ) , inline-block , list-item ( ul과 같다 ).
+
+margin 속성.
+박스의 외부 여백 지정.
+상우하좌에 순서대로 값을 적용한다. ( 시계방향 )
+박스가 인접한 경우 큰 박스의 마진값만 사용한다.
+
+padding 속성.
+요소 내용과 테두리 사이의 여백 지정.
+상우하좌에 순서대로 값을 적용한다. ( 시계방향 )
+
+width , height 속성.
+내용 표시 영역의 폭과 높이 지정.
+
+vertical-align 속성.
+요소의 수직 정렬 지정.
+
+position 속성.
+요소 배치의 기준이 되는 위치 지정.
+static : 페이지의 정상적인 흐름에 따라 현재의 위치를 요소의 위치로 지정.
+absolute : 브라우저의 왼쪽 상단의 모서리를 기준으로 지정한 위치만큼 이동하여 요소 배치.
+relative : 현재 위치를 ( 0 , 0 )으로 정하고 이를 기준으로 지정한 위치만큼 이동하여 요소 배치.
+fixed : 뷰포트를 기준으로 지정한 위치만큼 이동하여 요소 배치. ( 스크롤해도 움직이지 않음 )
+
+top , bottom , left , right 속성.
+박스의 포함 블록의 각 변을 기준으로 해당 요소가 떨어져 있는 거리 지정.
+
+z-index 속성.
+요소가 겹쳐지는 순서 지정.
+
+float 속성.
+컨텐츠의 일반적인 흐름을 벗어나서 부모 요소 영역을 기준으로
+해당 요소를 왼쪽/오른쪽에 배치하도록 지정.
+none , left , right.
+
+clear 속성.
+float 속성에 의해 영향을 받는 요소의 흐름을 해제.
+none , left , right , both.
+
+overflow 속성.
+컨텐츠가 요소 박스를 넘어서는 경우의 처리 방법 지정.
+visible, hidden, scroll, auto.
+
+visibility 속성.
+요소 박스를 화면에 표시할 지를 지정.
+visible , hidden , collapse.
+
+resize 속성.
+사용자가 요소의 크기를 자유롭게 조정할 수 있도록 지정.
+overflow 속성과 함께 사용해야 함.
+none , both , horizontal , vertical.
+
+
+
+
