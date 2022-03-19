@@ -1,0 +1,78 @@
+
+ 문서 객체 모델.
+
+
+
+ # DOM 요소의 접근 방법.
+
+문서 객체 모델 DOM Document Object Model.
+문서 객체 : HTML 문서의 태그를 자바스크립트에서 사용할 수 있도록 객체로 만든 것.
+DOM : 브라우저가 HTML 문서에 접근할 수 있도록 정의해 놓은 표준 모델.
+웹 문서가 적재되면 웹브라우저는 정적으로 DOM을 생성.
+계층적인 구조를 갖는 트리로 표현.
+
+DOM 트리.
+document -> html -> head -> title -> ... 
+		-> body -> <div> -> ...
+
+DOM 요소의 접근 방법.
+- id를 이용한 방법.
+  - getElementById( "아이디명" ) : 오직 하나의 요소만 선택.
+- 태그명을 이용한 방법.
+  - getElementsByTagName( "태그명" ) : 태그명을 사용하는 모든 요소를 리스트 형태로 반환.
+- 클래스명을 이용한 방법.
+  - getElementsByClassName( "클래스이름" ) : 클래스이름을 사용하는 모든 요소를 리스트 형태로 반환.
+
+
+
+ # DOM 요소의 수정.
+
+요소의 내용 수정.
+- innerHTML 속성.
+  - HTML 형식으로 요소의 내용을 다룰 때 사용.
+  - 변수 = 요소변수.innerHTML , 요소변수.innerHTML = 값 등으로 사용.
+- textContent 속성.
+  - HTML 태그와 속성을 제외하고 내용만을 가져오는 경우.
+  - 변수 = 요소변수.textContent , 요소변수.textContent = 값 등으로 사용.
+
+요소의 속성 수정.
+document.getElementById( "아이디명" ).속성 = 값 ;
+
+요소의 스타일 수정.
+document.getElementById( "아이디명" ).style.CSS속성명 = 값 ;
+주의사항 : CSS속성명에 '-'을 없애고 Camel표기법으로 바꿔서 적용한다.
+
+
+
+ # DOM 노드 삽입과 삭제.
+
+텍스트가 있는 새 요소의 삽입 과정.
+- 추가하려는 새로운 요소를 생성.
+- 텍스트 내용이 있는 경우 텍스트 노드를 생성.
+- 생성된 텍스트 노드를 새로운 요소의 자식 요소로 연결.
+- 새 요소가 추가될 부모 요소를 찾아 자식 요소로 연결.
+
+텍스트가 있는 새 요소의 삽입 과정 - 예시 코드.
+var 새요소변수 = document.createElement( "요소명" ) ;
+var 텍스트노드변수 = document.createTextNode( "텍스트내용" ) ;
+새요소변수.appendChild( 텍스트노드변수 ) ;
+var 부모요소변수 = document.getElementById( "부모아이디명" ) ;
+부모요소변수.appendChild( 새요소변수 ) ;
+
+속성이 있는 새 요소의 삽입 과정.
+- 추가하려는 새로운 요소를 생성.
+- 새로운 속성을 생성한 후 속성값을 지정.
+- 생성된 속성 노드를 새로운 요소에 추가.
+- 새 요소가 추가될 부모 요소를 찾아 자식 요소로 연결.
+
+속성이 있는 새 요소의 삽입 과정 - 예시 코드.
+var 새요소변수 = document.createElement( "요소명" ) ;
+var 속성노드변수 = document.createAttribute( "속성명" ) ;
+속성노드변수.value = "속성값" ;
+새요소변수.setAttributeNode( 속성노드변수 ) ;
+var 부모요소변수 = document.getElementById( "부모아이디명" ) ;
+부모요소변수.appendChild( 새요소변수 ) ;
+
+
+
+
