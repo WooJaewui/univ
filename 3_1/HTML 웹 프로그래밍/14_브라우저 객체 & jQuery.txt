@@ -1,0 +1,100 @@
+
+ 브라우저 객체 & jQuery.
+
+
+
+ # 브라우저 객체 모델.
+
+BOM Browser Object Model.
+브라우저를 객체로 표현한 것.
+window 
+  - document : HTML 문서를 표현.
+  - history : 사용자가 방문한 URL을 저장 관리.
+  - location : 현재 URL에 대한 정보를 유지.
+  - navigator : 브라우저에 대한 정보를 관리.
+
+window 객체.
+창에 대한 전반적인 모든 상황을 제어하는 최상위 객체.
+주요 메소드.
+  - open() , close() : 새로운 창을 엶, 열린 창을 닫음.
+  - alert(), confirm(), prompt() : 경고창, 확인창, 입력창.
+  - setInterval() : 일정 시간 간격으로 함수를 반복적으로 호출.
+  - setTimeout() : 일정 시간 후에 지정함수를 수행.
+  - moveBy(), moveTo() : 창의 위치 변경.
+  - resizeBy(), resizeTo() : 창의 크기 변경.
+
+window.open( ).
+window.open( "연결할 URL" , "타깃 또는 창의 이름" , "옵션리스트" );
+  - 연결할 URL : 창에 표시할 HTML 문서의 URL.
+  - 타깃 또는 창의 이름 : _blank , _self , 창의 이름.
+  - 옵션리스트 : 속성 = 값 ( location , status , menubar , height , ... )
+
+setTimeout( ).
+지정한 시간 후에 특정 코드( 함수 )를 실행시키는 메소드.
+timerID = setTimeout( "호출함수" , 지연시간 ) ;
+clearTimeout( timerID ) ;
+  - clearTimeout : 변수를 통해 setTimeout()으로 설정된 내용을 중지하는 함수.
+
+setInterval( ).
+일정한 시간 간격으로  특정 함수를 무한히 반복 호출.
+timerID = setInterval( "호출함수" , 시간 간격 ) ;
+clearInterval( timerID ) ;
+  - clearInterval : setInerval( )을 통해 무한히 반복되는 함수를 중지하는 함수.
+
+
+
+ # jQuery 개념.
+
+jQuery.
+클라이언트용 자바스크립트 라이브러리.
+모든 웹브라우저에서 동작하는 무료 오픈 소스 라이브러리.
+적은 용량, 빠르고 풍부한 기능 제공.
+자바스크립트 작업을 API를 통해 빠르고 간단한 처리 가능.
+
+jQuery 사용 방법.
+1. jQuery 다운로드. ( 외부 자바스크립트 파일로 추가 )
+  - compressed, production : 주석이나 여백 등을 모두 제외시킨 최소화한 버전.
+  - uncompressed, development : 개발자가 소스 파일을 참조할 수 있도록 압축하지 않은 파일.
+  - <script src="다운로드 파일이름"></script>
+2. CDN 이용.
+  - Content Delivery Network : 사용자가 접속하는 지역과 가까운 서버에서 파일을 전송하는 기술.
+  - <script src="url"></script>
+
+jQuery 소스 작성 시 주의 사항.
+1. jQuery 소스 파일을 링크하는 <script src="...">태그는 다른 <script> 태그보다 먼저 사용되어야 함.
+2. <style> 태그는 <script src="..."> 태그보다 먼저 기술되어야 한다.
+
+
+
+ # jQuery 구문과 선택자.
+
+기본 형식.
+웹 페이지가 완전히 로드될 때까지 기다린 후에 괄호 안의 함수를 실행.
+$( document ).ready( function( ) { 
+	$( 선택자 ).메소드( ... ) ;
+} ) ;
+$( function( ) { 
+	$( 선택자 ).메소드( ... ) ;
+} ) ;
+
+이벤트 처리.
+$( 선택자 ).bind( '이벤트명' , function( ) { 
+	처리 내용 ;
+} ) ;
+$( 선택자 ).이벤트명( function( e ) { 
+	처리 내용 ;
+} ) ;
+- e : 이벤트 객체. ( e.type , e.which , ... 등을 사용할 수 있다 )
+
+jQuery 선택자.
+특정 동작을 적용시킬 HTML 요소 지정. ( CSS 선택자와 동일한 표기법 사용 )
+$( " * " ) : 문서의 모든 요소를 선택.
+$( "요소이름" ) : 요소명을 통한 선택.
+$( "#아이디" ) : 아이디이름을 통한 선택.
+$( ".클래스" ) : 클래스이름을 통한 선택.
+$( "input[name]" ) : name속성을 가진 input 요소를 선택.
+$( "input[type='text']" ) : type="text"인 input 요소를 선택.
+... 
+
+
+
